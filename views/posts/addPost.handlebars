@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/addPost.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/starability-slot.min.css" />
+    <title>Cinephilia</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-7 mx-auto box">
+            {{#each errors}}
+                <div class="alert alert-warning">{{msg}}</div>
+            {{/each}}
+            <h1 class="display-4 text-center mb-3">Add New Post</h1>
+            <form method="POST" action="/posts/addPost" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="title" name="title" />
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="5" id="description" name="description"></textarea>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="postImage" name="postImage">
+                    <label class="custom-file-label" for="postImage">Choose Image For Post</label>
+                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+                </div>
+                <fieldset class="starability-slot mt-3">
+                    <legend>Movie rating:</legend>
+                    <input type="radio" id="first-rate1" name="rating" value="1" />
+                    <label for="first-rate1" title="Terrible">1 star</label>
+                    <input type="radio" id="first-rate2" name="rating" value="2" />
+                    <label for="first-rate2" title="Not good">2 stars</label>
+                    <input type="radio" id="first-rate3" name="rating" value="3" />
+                    <label for="first-rate3" title="Average">3 stars</label>
+                    <input type="radio" id="first-rate4" name="rating" value="4" />
+                    <label for="first-rate4" title="Very good">4 stars</label>
+                    <input type="radio" id="first-rate5" name="rating" value="5" />
+                    <label for="first-rate5" title="Amazing">5 stars</label>
+                </fieldset>
+                <button type="submit" class="btn btn-block btn-success mt-5">Add Post</button>
+                <a href="javascript:history.back()" 
+                class="btn btn-block btn-warning mt-3" role="button">Cancel</a>
+            </form>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cinephilia</title>
+</head>
+<body>
+    {{#if success_msg}}
+        <div class="alert alert-success">{{success_msg}}</div>
+    {{/if}}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card card-body">
+                {{#if req.user.profileImage}}
+                <img src="/users/images/{{user.profileImage}}" class="img-fluid" />
+                {{else}}
+                <img src="/images/unknown-user-symbol.svg" class="img-fluid mx-auto" style="width:50%;"/>
+                {{/if}}
+            </div>
+        </div>
+        <div class="col-lg-6" style="vertical-align:top;">
+                <h1 class="display-4">Name: {{user.name}}</h1>
+                <h2 style="font-weight:300;">Username: {{user.username}}</h2>
+                <p class="lead" 
+                style="overflow-y:auto;
+                background-color:#f2f2f2;
+                box-sizing:border-box;padding:3.5%;">
+                <strong>About {{user.username}}:</strong> {{user.aboutYourself}}</p>
+                <a href="/posts/addPost" class="btn btn-block btn-primary" role="button">
+                Add New Film To Favorite List</a> 
+        </div>
+    </div>
+    
+    {{#each posts}}
+        <div class="card" style="width:25%;display:inline-block;vertical-align:top;margin:1% 1% 1% 0%;">
+            {{#if this.postImage}}
+            <img class="card-img-top" src="/posts/image/{{this.postImage}}" alt="Card image cap">
+            {{else}}
+            <img class="card-img-top" src="/images/no-content.png" alt="Card image cap">
+            {{/if}}
+            <div class="card-body">
+                <h5 class="card-title">{{this.title}}</h5>
+                <p class="card-text">{{this.description}}</p>
+                <h5><strong>Rating: </strong>{{this.rating}}</h5>
+                <form method="POST" action="/posts/remove/{{this._id}}?_method=DELETE">
+                    <button type="submit" class="btn btn-danger">Remove Post!!!</button>
+                </form>
+                <a href="/posts/edit/{{this._id}}" role="button" class="btn btn-dark mt-3" >Edit Post!!!</a>
+            </div>
+        </div>
+    {{/each}}
+       
+</body>
+</html>

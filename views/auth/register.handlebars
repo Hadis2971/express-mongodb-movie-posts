@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cinephilia</title>
+    <style>
+        .reg-btn{
+            background-color: #6B5B95;
+            color: #FFF;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .reg-btn:hover{
+            background-color: #50446f;
+            
+        }
+
+        .row{
+            position: relative;
+             -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.7s;
+            animation-name: animatetop;
+            animation-duration: 0.7s
+        }
+
+
+        @keyframes animatetop{
+            from{top: -700px;opacity: 0}
+            to{top:0px;opacity: 1}
+        }
+        -webkit-@keyframes animatetop{
+            from{top: -700px;opacity: 0}
+            to{top:0px;opacity: 1}
+        }
+    </style>
+</head>
+<body>
+    <div class="row" style="margin-top:7%;">
+        <div class="col-md-7 mx-auto">
+            {{#each errors}}
+                <div class="alert alert-danger">{{msg}}</div>
+            {{/each}}
+            {{#if user}}
+                <div class="alert alert-danger">That Username Has Already Been Taken</div>
+            {{/if}}
+            {{#if mail}}
+                <div class="alert alert-danger">That Email Address Has Already Been Taken</div>
+            {{/if}}
+            <div class="card card-body">
+                <h1 class="text-center display-3" style="color:#6B5B95;">Sign Up</h1>
+                <form method="POST" action="/users/register" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="" name="email" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password2">Confirm Password</label>
+                        <input type="password" id="password2" name="password2" class="form-control" />
+                    </div>
+                     <div class="form-group">
+                        <label for="aboutYourself">Write About Yourself</label>
+                        <textarea class="form-control" name="aboutYourself" id="aboutYourself" rows="3"></textarea>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="profileImageFile" id="profileImageFile">
+                        <label class="custom-file-label" for="profileImageFile">Choose Profile Image...</label>
+                        <div class="invalid-feedback">Example invalid custom file feedback</div>
+                    </div>
+                    <button type="submit" class="btn btn-block reg-btn mt-3">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

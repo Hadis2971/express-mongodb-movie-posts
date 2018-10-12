@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cinephilia</title>
+    <style>
+        .log-btn{
+            background-color: #6B5B95;
+            color: #FFF;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .log-btn:hover{
+            background-color: #50446f;
+            
+        }
+
+        .row{
+            position: relative;
+             -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.7s;
+            animation-name: animatetop;
+            animation-duration: 0.7s
+        }
+
+
+        @keyframes animatetop{
+            from{top: -300px;opacity: 0}
+            to{top:0px;opacity: 1}
+        }
+        -webkit-@keyframes animatetop{
+            from{top: -300px;opacity: 0}
+            to{top:0px;opacity: 1}
+        }
+    </style>
+</head>
+<body>
+    <div class="row" style="margin-top:13%;">
+        <div class="col-md-7 mx-auto">
+            {{#if success_msg}}
+                <div class="alert alert-success">{{success_msg}}</div>
+            {{/if}}
+            {{#if info_msg}}
+                <div class="alert alert-info">{{info_msg}}</div>
+            {{/if}}
+            {{> _error}}
+            <div class="card card-body">
+                <h1 class="text-center display-3" style="color:#6B5B95;">Sign In</h1>
+                <form method="POST" action="/users/login">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-block log-btn mt-3">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
